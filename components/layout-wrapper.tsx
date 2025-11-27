@@ -13,7 +13,7 @@ export function LayoutWrapper({ children }: LayoutWrapperProps) {
   const [sidebarOpen, setSidebarOpen] = useState(true);
 
   return (
-    <div className="flex h-screen bg-gray-50">
+    <div className="flex h-screen bg-background">
       {/* Sidebar */}
       <div
         className={cn(
@@ -27,7 +27,7 @@ export function LayoutWrapper({ children }: LayoutWrapperProps) {
       {/* Main Content */}
       <div className="flex flex-1 flex-col overflow-hidden">
         <Header onToggleSidebar={() => setSidebarOpen(!sidebarOpen)} />
-        <main className="flex-1 overflow-auto">
+        <main className="flex-1 overflow-auto bg-background">
           {children}
         </main>
       </div>
