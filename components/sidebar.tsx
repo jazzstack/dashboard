@@ -121,6 +121,7 @@ interface MenuItemProps {
 
 function MenuItem({ item, defaultExpanded = false }: MenuItemProps) {
   const [expanded, setExpanded] = useState(defaultExpanded);
+  const { theme } = useTheme();
   const hasSubItems = item.subItems && item.subItems.length > 0;
 
   if (hasSubItems) {
@@ -131,8 +132,8 @@ function MenuItem({ item, defaultExpanded = false }: MenuItemProps) {
           className={cn(
             'w-full flex items-center justify-between px-3.5 py-3 rounded-lg transition-all duration-200',
             expanded
-              ? 'bg-indigo-100 text-indigo-600'
-              : 'hover:bg-gray-100 text-gray-700'
+              ? 'bg-accent text-primary'
+              : 'hover:bg-secondary text-foreground'
           )}
         >
           <div className="flex items-center gap-3">
@@ -147,19 +148,19 @@ function MenuItem({ item, defaultExpanded = false }: MenuItemProps) {
           />
         </button>
         {expanded && (
-          <div className="ml-8 space-y-1 border-l border-gray-200 py-2">
+          <div className="ml-8 space-y-1 border-l border-border py-2">
             {item.subItems!.map((subItem) => (
               <Link
                 key={subItem.label}
                 href={subItem.href || '#'}
                 className={cn(
                   'flex items-center justify-between px-3 py-2 rounded-lg text-sm transition-all duration-200',
-                  'hover:bg-gray-100 text-gray-600'
+                  'hover:bg-secondary text-muted-foreground'
                 )}
               >
                 <span>{subItem.label}</span>
                 {subItem.pro && (
-                  <span className="px-2 py-0.5 bg-indigo-600 text-white text-xs font-medium rounded">
+                  <span className="px-2 py-0.5 bg-primary text-primary-foreground text-xs font-medium rounded">
                     Pro
                   </span>
                 )}
@@ -176,7 +177,7 @@ function MenuItem({ item, defaultExpanded = false }: MenuItemProps) {
       href={item.href || '#'}
       className={cn(
         'flex items-center justify-between px-3.5 py-3 rounded-lg transition-all duration-200',
-        'hover:bg-gray-100 text-gray-700'
+        'hover:bg-secondary text-foreground'
       )}
     >
       <div className="flex items-center gap-3">
@@ -185,12 +186,12 @@ function MenuItem({ item, defaultExpanded = false }: MenuItemProps) {
       </div>
       <div className="flex items-center gap-2">
         {item.badge !== undefined && (
-          <span className="flex items-center justify-center w-5 h-5 rounded-full bg-red-100 text-red-600 text-xs font-semibold mr-2">
+          <span className="flex items-center justify-center w-5 h-5 rounded-full bg-destructive/20 text-destructive text-xs font-semibold mr-2">
             {item.badge}
           </span>
         )}
         {item.pro && (
-          <span className="px-2 py-0.5 bg-indigo-600 text-white text-xs font-medium rounded">
+          <span className="px-2 py-0.5 bg-primary text-primary-foreground text-xs font-medium rounded">
             Pro
           </span>
         )}
