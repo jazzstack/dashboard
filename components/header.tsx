@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Menu, Search, Sun, Moon, Bell, LogOut, ChevronDown } from 'lucide-react';
 import { useTheme } from 'next-themes';
 import { cn } from '@/lib/utils';
@@ -19,7 +19,12 @@ export function Header({
   const [searchFocused, setSearchFocused] = useState(false);
   const [notificationsOpen, setNotificationsOpen] = useState(false);
   const [userMenuOpen, setUserMenuOpen] = useState(false);
+  const [mounted, setMounted] = useState(false);
   const { theme, setTheme } = useTheme();
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   const notifications = [
     { id: 1, message: 'New message from John', time: '5 minutes ago' },
@@ -28,14 +33,14 @@ export function Header({
   ];
 
   return (
-    <header className="sticky top-0 z-30 w-full border-b border-gray-200 bg-white">
+    <header className="sticky top-0 z-30 w-full border-b border-border bg-background">
       <div className="flex items-center justify-between px-8 py-5">
         {/* Left Section */}
         <div className="flex items-center gap-6">
           {/* Toggle Sidebar Button */}
           <button
             onClick={onToggleSidebar}
-            className="flex md:flex items-center gap-2 rounded-lg border border-gray-300 bg-transparent px-2 py-1.5 text-gray-700 transition-colors hover:bg-gray-50"
+            className="flex md:flex items-center gap-2 rounded-lg border border-border bg-transparent px-2 py-1.5 text-foreground transition-colors hover:bg-secondary"
           >
             <Menu className="h-6 w-6" />
             <span className="sr-only">Toggle Sidebar</span>
@@ -43,8 +48,8 @@ export function Header({
 
           {/* Title Section */}
           <div>
-            <h1 className="text-2xl font-bold text-gray-900">{title}</h1>
-            <p className="text-sm font-medium text-gray-600">{subtitle}</p>
+            <h1 className="text-2xl font-bold text-foreground">{title}</h1>
+            <p className="text-sm font-medium text-muted-foreground">{subtitle}</p>
           </div>
         </div>
 
@@ -53,37 +58,40 @@ export function Header({
           {/* Search Bar */}
           <div
             className={cn(
-              'flex items-center gap-3 rounded-full border bg-gray-100 px-5 py-3 transition-all duration-200',
+              'flex items-center gap-3 rounded-full border bg-secondary px-5 py-3 transition-all duration-200',
               searchFocused
-                ? 'border-indigo-500 bg-white shadow-sm'
-                : 'border-gray-300 bg-gray-100'
+                ? 'border-primary bg-background shadow-sm'
+                : 'border-border bg-secondary'
             )}
           >
-            <Search className="h-4 w-4 text-gray-600" />
+            <Search className="h-4 w-4 text-muted-foreground" />
             <input
               type="text"
               placeholder="Search..."
               onFocus={() => setSearchFocused(true)}
               onBlur={() => setSearchFocused(false)}
-              className="w-64 bg-transparent text-sm outline-none placeholder:text-gray-500"
+              className="w-64 bg-transparent text-sm outline-none placeholder:text-muted-foreground"
             />
           </div>
 
           {/* Theme Toggle */}
           <button
             onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-            className="flex items-center justify-center rounded-full bg-gray-200 p-1.5 transition-colors hover:bg-gray-300"
+            className="flex items-center justify-center rounded-full bg-secondary p-2.5 transition-colors hover:bg-accent"
             aria-label="Toggle dark mode"
+            title={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
           >
-            <div className="flex gap-2 p-1">
-              <div className="flex h-9 w-9 items-center justify-center rounded-full">
+            {mounted ? (
+              <>
                 {theme === 'light' ? (
-                  <Sun className="h-5 w-5 text-gray-900" />
+                  <Sun className="h-5 w-5 text-foreground" />
                 ) : (
-                  <Moon className="h-5 w-5 text-gray-900" />
+                  <Moon className="h-5 w-5 text-foreground" />
                 )}
-              </div>
-            </div>
+              </>
+            ) : (
+              <Sun className="h-5 w-5 text-foreground" />
+            )}
           </button>
 
           {/* Notifications */}
