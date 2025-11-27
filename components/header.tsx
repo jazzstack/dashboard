@@ -98,36 +98,36 @@ export function Header({
           <div className="relative">
             <button
               onClick={() => setNotificationsOpen(!notificationsOpen)}
-              className="relative flex h-12 w-12 items-center justify-center rounded-full bg-gray-100 transition-colors hover:bg-gray-200"
+              className="relative flex h-12 w-12 items-center justify-center rounded-full bg-secondary transition-colors hover:bg-accent"
               aria-label="Notifications"
               aria-expanded={notificationsOpen}
               aria-haspopup="menu"
             >
-              <Bell className="h-5 w-5 text-gray-900" />
-              <span className="absolute right-0 top-0 flex h-2 w-2 items-center justify-center rounded-full bg-red-500">
-                <span className="h-2 w-2 animate-ping rounded-full bg-red-500 opacity-75" />
+              <Bell className="h-5 w-5 text-foreground" />
+              <span className="absolute right-0 top-0 flex h-2 w-2 items-center justify-center rounded-full bg-destructive">
+                <span className="h-2 w-2 animate-ping rounded-full bg-destructive opacity-75" />
               </span>
             </button>
 
             {/* Notifications Dropdown */}
             {notificationsOpen && (
-              <div className="absolute right-0 mt-2 w-80 rounded-lg border border-gray-200 bg-white shadow-lg">
-                <div className="border-b border-gray-200 px-4 py-3">
-                  <h3 className="font-semibold text-gray-900">Notifications</h3>
+              <div className="absolute right-0 mt-2 w-80 rounded-lg border border-border bg-card shadow-lg">
+                <div className="border-b border-border px-4 py-3">
+                  <h3 className="font-semibold text-foreground">Notifications</h3>
                 </div>
                 <div className="max-h-96 overflow-y-auto">
                   {notifications.map((notification) => (
                     <div
                       key={notification.id}
-                      className="border-b border-gray-100 px-4 py-3 hover:bg-gray-50"
+                      className="border-b border-border px-4 py-3 hover:bg-secondary"
                     >
-                      <p className="text-sm text-gray-700">{notification.message}</p>
-                      <p className="text-xs text-gray-500">{notification.time}</p>
+                      <p className="text-sm text-foreground">{notification.message}</p>
+                      <p className="text-xs text-muted-foreground">{notification.time}</p>
                     </div>
                   ))}
                 </div>
-                <div className="border-t border-gray-200 px-4 py-2">
-                  <button className="w-full text-center text-sm text-indigo-600 hover:text-indigo-700">
+                <div className="border-t border-border px-4 py-2">
+                  <button className="w-full text-center text-sm text-primary hover:opacity-80">
                     View all notifications
                   </button>
                 </div>
@@ -139,12 +139,12 @@ export function Header({
           <div className="relative">
             <button
               onClick={() => setUserMenuOpen(!userMenuOpen)}
-              className="flex items-center gap-3 rounded-md transition-colors hover:bg-gray-50"
+              className="flex items-center gap-3 rounded-md transition-colors hover:bg-secondary"
               aria-expanded={userMenuOpen}
               aria-haspopup="menu"
             >
               <div className="text-right">
-                <p className="text-sm font-medium text-gray-900">John Smith</p>
+                <p className="text-sm font-medium text-foreground">John Smith</p>
               </div>
               <img
                 src="https://api.dicebear.com/7.x/avataaars/svg?seed=John"
@@ -153,7 +153,7 @@ export function Header({
               />
               <ChevronDown
                 className={cn(
-                  'h-5 w-5 text-gray-900 transition-transform',
+                  'h-5 w-5 text-foreground transition-transform',
                   userMenuOpen && 'rotate-180'
                 )}
               />
@@ -161,24 +161,24 @@ export function Header({
 
             {/* User Menu Dropdown */}
             {userMenuOpen && (
-              <div className="absolute right-0 mt-2 w-48 rounded-lg border border-gray-200 bg-white shadow-lg">
-                <div className="px-4 py-3 border-b border-gray-200">
-                  <p className="text-sm font-medium text-gray-900">John Smith</p>
-                  <p className="text-xs text-gray-600">john@example.com</p>
+              <div className="absolute right-0 mt-2 w-48 rounded-lg border border-border bg-card shadow-lg">
+                <div className="px-4 py-3 border-b border-border">
+                  <p className="text-sm font-medium text-foreground">John Smith</p>
+                  <p className="text-xs text-muted-foreground">john@example.com</p>
                 </div>
                 <nav className="py-2">
-                  <button className="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                  <button className="w-full text-left px-4 py-2 text-sm text-foreground hover:bg-secondary">
                     Profile Settings
                   </button>
-                  <button className="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                  <button className="w-full text-left px-4 py-2 text-sm text-foreground hover:bg-secondary">
                     Account
                   </button>
-                  <button className="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                  <button className="w-full text-left px-4 py-2 text-sm text-foreground hover:bg-secondary">
                     Preferences
                   </button>
                 </nav>
-                <div className="border-t border-gray-200 px-4 py-2">
-                  <button className="w-full flex items-center gap-2 rounded px-3 py-2 text-sm text-red-600 hover:bg-red-50">
+                <div className="border-t border-border px-4 py-2">
+                  <button className="w-full flex items-center gap-2 rounded px-3 py-2 text-sm text-destructive hover:bg-destructive/10">
                     <LogOut className="h-4 w-4" />
                     Logout
                   </button>
