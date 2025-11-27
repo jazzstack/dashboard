@@ -209,7 +209,7 @@ interface MenuSectionProps {
 function MenuSection({ title, items, defaultExpandedIndex }: MenuSectionProps) {
   return (
     <div className="mb-6">
-      <h2 className="px-3.5 text-xs font-semibold text-gray-500 uppercase tracking-wider mb-4">
+      <h2 className="px-3.5 text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-4">
         {title}
       </h2>
       <nav className="space-y-1">
@@ -227,14 +227,14 @@ function MenuSection({ title, items, defaultExpandedIndex }: MenuSectionProps) {
 
 export function Sidebar() {
   return (
-    <aside className="w-64 h-screen bg-white border-r border-gray-200 flex flex-col overflow-hidden">
+    <aside className="w-64 h-screen bg-background border-r border-border flex flex-col overflow-hidden">
       {/* Header/Logo */}
-      <div className="px-6 py-8 border-b border-gray-200">
+      <div className="px-6 py-8 border-b border-border">
         <Link href="/" className="flex items-center gap-2">
-          <div className="w-8 h-8 bg-indigo-600 rounded-lg flex items-center justify-center">
-            <span className="text-white font-bold">NA</span>
+          <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
+            <span className="text-primary-foreground font-bold">NA</span>
           </div>
-          <span className="font-bold text-lg">NextAdmin</span>
+          <span className="font-bold text-lg text-foreground">NextAdmin</span>
         </Link>
       </div>
 
