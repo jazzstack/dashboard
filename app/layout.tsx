@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist } from "next/font/google";
 import { ThemeProvider } from "next-themes";
+import { Sidebar } from "@/components/sidebar";
 import "./globals.css";
 
 const defaultUrl = process.env.VERCEL_URL
@@ -33,7 +34,12 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          {children}
+          <div className="flex h-screen bg-gray-50">
+            <Sidebar />
+            <main className="flex-1 overflow-auto">
+              {children}
+            </main>
+          </div>
         </ThemeProvider>
       </body>
     </html>
