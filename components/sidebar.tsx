@@ -232,9 +232,9 @@ export function Sidebar() {
       <div className="px-6 py-8 border-b border-border">
         <Link href="/" className="flex items-center gap-2">
           <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
-            <span className="text-primary-foreground font-bold">NA</span>
+            <span className="text-primary-foreground font-bold">SS</span>
           </div>
-          <span className="font-bold text-lg text-foreground">NextAdmin</span>
+          <span className="font-bold text-lg text-foreground">SaaS Dashboard</span>
         </Link>
       </div>
 
