@@ -1,7 +1,4 @@
 import { Hero } from "@/components/hero";
-import { ConnectSupabaseSteps } from "@/components/tutorial/connect-supabase-steps";
-import { SignUpUserSteps } from "@/components/tutorial/sign-up-user-steps";
-import { hasEnvVars } from "@/lib/utils";
 
 export default function Home() {
   return (
@@ -9,7 +6,6 @@ export default function Home() {
       <Hero />
       <div className="flex-1 flex flex-col gap-6">
         <h2 className="font-medium text-2xl">Next steps</h2>
-        {hasEnvVars ? <SignUpUserSteps /> : <ConnectSupabaseSteps />}
       </div>
 
       <footer className="mt-12 border-t border-gray-200 pt-8 text-center text-xs">

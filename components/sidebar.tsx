@@ -1,7 +1,7 @@
-'use client';
+"use client";
 
-import { useState } from 'react';
-import Link from 'next/link';
+import { useState } from "react";
+import Link from "next/link";
 import {
   Home,
   Calendar,
@@ -17,9 +17,9 @@ import {
   Palette,
   LogOut,
   ChevronDown,
-} from 'lucide-react';
-import { cn } from '@/lib/utils';
-import { useTheme } from 'next-themes';
+} from "lucide-react";
+import { cn } from "@/lib/utils";
+import { useTheme } from "next-themes";
 
 interface MenuItem {
   label: string;
@@ -32,43 +32,43 @@ interface MenuItem {
 
 const SidebarMenuItems: MenuItem[] = [
   {
-    label: 'Dashboard',
+    label: "Dashboard",
     icon: <Home className="w-6 h-6" />,
     subItems: [
-      { label: 'eCommerce', href: '/' },
-      { label: 'Analytics', href: '/analytics', pro: true },
-      { label: 'Marketing', href: '/marketing', pro: true },
-      { label: 'CRM', href: '/crm', pro: true },
-      { label: 'Stocks', href: '/stocks', pro: true },
+      { label: "eCommerce", href: "/eCommerce" },
+      { label: "Analytics", href: "/analytics", pro: true },
+      { label: "Marketing", href: "/marketing", pro: true },
+      { label: "CRM", href: "/crm", pro: true },
+      { label: "Stocks", href: "/stocks", pro: true },
     ],
   },
   {
-    label: 'Calendar',
+    label: "Calendar",
     icon: <Calendar className="w-6 h-6" />,
-    href: '/calendar',
+    href: "/calendar",
   },
   {
-    label: 'Profile',
+    label: "Profile",
     icon: <User className="w-6 h-6" />,
-    href: '/profile',
+    href: "/profile",
   },
   {
-    label: 'Tasks',
+    label: "Tasks",
     icon: <CheckSquare className="w-6 h-6" />,
     subItems: [],
   },
   {
-    label: 'Forms',
+    label: "Forms",
     icon: <FileText className="w-6 h-6" />,
     subItems: [],
   },
   {
-    label: 'Tables',
+    label: "Tables",
     icon: <Table className="w-6 h-6" />,
     subItems: [],
   },
   {
-    label: 'Pages',
+    label: "Pages",
     icon: <FileQuestion className="w-6 h-6" />,
     subItems: [],
   },
@@ -76,39 +76,39 @@ const SidebarMenuItems: MenuItem[] = [
 
 const SupportMenuItems: MenuItem[] = [
   {
-    label: 'Messages',
+    label: "Messages",
     icon: <MessageSquare className="w-6 h-6" />,
-    href: '/messages',
+    href: "/messages",
     badge: 9,
     pro: true,
   },
   {
-    label: 'Inbox',
+    label: "Inbox",
     icon: <Mail className="w-6 h-6" />,
-    href: '/inbox',
+    href: "/inbox",
     pro: true,
   },
   {
-    label: 'Invoice',
+    label: "Invoice",
     icon: <FileCheck className="w-6 h-6" />,
-    href: '/invoice',
+    href: "/invoice",
     pro: true,
   },
 ];
 
 const OthersMenuItems: MenuItem[] = [
   {
-    label: 'Charts',
+    label: "Charts",
     icon: <BarChart3 className="w-6 h-6" />,
     subItems: [],
   },
   {
-    label: 'UI Elements',
+    label: "UI Elements",
     icon: <Palette className="w-6 h-6" />,
     subItems: [],
   },
   {
-    label: 'Authentication',
+    label: "Authentication",
     icon: <LogOut className="w-6 h-6" />,
     subItems: [],
   },
@@ -130,10 +130,10 @@ function MenuItem({ item, defaultExpanded = false }: MenuItemProps) {
         <button
           onClick={() => setExpanded(!expanded)}
           className={cn(
-            'w-full flex items-center justify-between px-3.5 py-3 rounded-lg transition-all duration-200',
+            "w-full flex items-center justify-between px-3.5 py-3 rounded-lg transition-all duration-200",
             expanded
-              ? 'bg-accent text-primary'
-              : 'hover:bg-secondary text-foreground'
+              ? "bg-accent text-primary"
+              : "hover:bg-secondary text-foreground",
           )}
         >
           <div className="flex items-center gap-3">
@@ -142,8 +142,8 @@ function MenuItem({ item, defaultExpanded = false }: MenuItemProps) {
           </div>
           <ChevronDown
             className={cn(
-              'w-4 h-4 transition-transform duration-200',
-              expanded ? 'rotate-0' : '-rotate-90'
+              "w-4 h-4 transition-transform duration-200",
+              expanded ? "rotate-0" : "-rotate-90",
             )}
           />
         </button>
@@ -152,10 +152,10 @@ function MenuItem({ item, defaultExpanded = false }: MenuItemProps) {
             {item.subItems!.map((subItem) => (
               <Link
                 key={subItem.label}
-                href={subItem.href || '#'}
+                href={subItem.href || "#"}
                 className={cn(
-                  'flex items-center justify-between px-3 py-2 rounded-lg text-sm transition-all duration-200',
-                  'hover:bg-secondary text-muted-foreground'
+                  "flex items-center justify-between px-3 py-2 rounded-lg text-sm transition-all duration-200",
+                  "hover:bg-secondary text-muted-foreground",
                 )}
               >
                 <span>{subItem.label}</span>
@@ -174,10 +174,10 @@ function MenuItem({ item, defaultExpanded = false }: MenuItemProps) {
 
   return (
     <Link
-      href={item.href || '#'}
+      href={item.href || "#"}
       className={cn(
-        'flex items-center justify-between px-3.5 py-3 rounded-lg transition-all duration-200',
-        'hover:bg-secondary text-foreground'
+        "flex items-center justify-between px-3.5 py-3 rounded-lg transition-all duration-200",
+        "hover:bg-secondary text-foreground",
       )}
     >
       <div className="flex items-center gap-3">
@@ -234,7 +234,9 @@ export function Sidebar() {
           <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
             <span className="text-primary-foreground font-bold">SS</span>
           </div>
-          <span className="font-bold text-lg text-foreground">SaaS Dashboard</span>
+          <span className="font-bold text-lg text-foreground">
+            SaaS Dashboard
+          </span>
         </Link>
       </div>
 

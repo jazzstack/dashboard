@@ -1,9 +1,17 @@
-'use client';
+"use client";
 
-import { useState, useEffect } from 'react';
-import { Menu, Search, Sun, Moon, Bell, LogOut, ChevronDown } from 'lucide-react';
-import { useTheme } from 'next-themes';
-import { cn } from '@/lib/utils';
+import { useState, useEffect } from "react";
+import {
+  Menu,
+  Search,
+  Sun,
+  Moon,
+  Bell,
+  LogOut,
+  ChevronDown,
+} from "lucide-react";
+import { useTheme } from "next-themes";
+import { cn } from "@/lib/utils";
 
 interface HeaderProps {
   title?: string;
@@ -12,8 +20,8 @@ interface HeaderProps {
 }
 
 export function Header({
-  title = 'Dashboard',
-  subtitle = 'Next.js Admin Dashboard Solution',
+  title = "Dashboard",
+  subtitle = "SaaS Admin Dashboard Solution",
   onToggleSidebar,
 }: HeaderProps) {
   const [searchFocused, setSearchFocused] = useState(false);
@@ -27,9 +35,9 @@ export function Header({
   }, []);
 
   const notifications = [
-    { id: 1, message: 'New message from John', time: '5 minutes ago' },
-    { id: 2, message: 'Your report is ready', time: '1 hour ago' },
-    { id: 3, message: 'System update completed', time: '2 hours ago' },
+    { id: 1, message: "New message from John", time: "5 minutes ago" },
+    { id: 2, message: "Your report is ready", time: "1 hour ago" },
+    { id: 3, message: "System update completed", time: "2 hours ago" },
   ];
 
   return (
@@ -49,7 +57,9 @@ export function Header({
           {/* Title Section */}
           <div>
             <h1 className="text-2xl font-bold text-foreground">{title}</h1>
-            <p className="text-sm font-medium text-muted-foreground">{subtitle}</p>
+            <p className="text-sm font-medium text-muted-foreground">
+              {subtitle}
+            </p>
           </div>
         </div>
 
@@ -58,10 +68,10 @@ export function Header({
           {/* Search Bar */}
           <div
             className={cn(
-              'flex items-center gap-3 rounded-full border bg-secondary px-5 py-3 transition-all duration-200',
+              "flex items-center gap-3 rounded-full border bg-secondary px-5 py-3 transition-all duration-200",
               searchFocused
-                ? 'border-primary bg-background shadow-sm'
-                : 'border-border bg-secondary'
+                ? "border-primary bg-background shadow-sm"
+                : "border-border bg-secondary",
             )}
           >
             <Search className="h-4 w-4 text-muted-foreground" />
@@ -76,14 +86,14 @@ export function Header({
 
           {/* Theme Toggle */}
           <button
-            onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+            onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
             className="flex items-center justify-center rounded-full bg-secondary p-2.5 transition-colors hover:bg-accent"
             aria-label="Toggle dark mode"
-            title={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
+            title={`Switch to ${theme === "dark" ? "light" : "dark"} mode`}
           >
             {mounted ? (
               <>
-                {theme === 'light' ? (
+                {theme === "light" ? (
                   <Sun className="h-5 w-5 text-foreground" />
                 ) : (
                   <Moon className="h-5 w-5 text-foreground" />
@@ -113,7 +123,9 @@ export function Header({
             {notificationsOpen && (
               <div className="absolute right-0 mt-2 w-80 rounded-lg border border-border bg-card shadow-lg">
                 <div className="border-b border-border px-4 py-3">
-                  <h3 className="font-semibold text-foreground">Notifications</h3>
+                  <h3 className="font-semibold text-foreground">
+                    Notifications
+                  </h3>
                 </div>
                 <div className="max-h-96 overflow-y-auto">
                   {notifications.map((notification) => (
@@ -121,8 +133,12 @@ export function Header({
                       key={notification.id}
                       className="border-b border-border px-4 py-3 hover:bg-secondary"
                     >
-                      <p className="text-sm text-foreground">{notification.message}</p>
-                      <p className="text-xs text-muted-foreground">{notification.time}</p>
+                      <p className="text-sm text-foreground">
+                        {notification.message}
+                      </p>
+                      <p className="text-xs text-muted-foreground">
+                        {notification.time}
+                      </p>
                     </div>
                   ))}
                 </div>
@@ -144,7 +160,9 @@ export function Header({
               aria-haspopup="menu"
             >
               <div className="text-right">
-                <p className="text-sm font-medium text-foreground">John Smith</p>
+                <p className="text-sm font-medium text-foreground">
+                  John Smith
+                </p>
               </div>
               <img
                 src="https://api.dicebear.com/7.x/avataaars/svg?seed=John"
@@ -153,8 +171,8 @@ export function Header({
               />
               <ChevronDown
                 className={cn(
-                  'h-5 w-5 text-foreground transition-transform',
-                  userMenuOpen && 'rotate-180'
+                  "h-5 w-5 text-foreground transition-transform",
+                  userMenuOpen && "rotate-180",
                 )}
               />
             </button>
@@ -163,8 +181,12 @@ export function Header({
             {userMenuOpen && (
               <div className="absolute right-0 mt-2 w-48 rounded-lg border border-border bg-card shadow-lg">
                 <div className="px-4 py-3 border-b border-border">
-                  <p className="text-sm font-medium text-foreground">John Smith</p>
-                  <p className="text-xs text-muted-foreground">john@example.com</p>
+                  <p className="text-sm font-medium text-foreground">
+                    John Smith
+                  </p>
+                  <p className="text-xs text-muted-foreground">
+                    john@example.com
+                  </p>
                 </div>
                 <nav className="py-2">
                   <button className="w-full text-left px-4 py-2 text-sm text-foreground hover:bg-secondary">
